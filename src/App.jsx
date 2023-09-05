@@ -1,4 +1,4 @@
-import { Flex, Stack, useToast } from "@chakra-ui/react";
+import { Box, Flex, Stack, useToast } from "@chakra-ui/react";
 import React from "react";
 import useLocalStorage from "./useLocalStorage";
 import { AnimatePresence, motion } from "framer-motion";
@@ -38,10 +38,18 @@ function App() {
   // };
 
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        width: "400px",
+        margin: "auto",
+      }}
+    >
+      {/* <Box width= "500px" > */}
       <Header />
       <Child />
-    </>
+    </Box>
   );
 }
 export default App;

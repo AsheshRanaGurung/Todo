@@ -1,11 +1,20 @@
-import { Input } from "@chakra-ui/react";
-import React from "react";
+import { Box, Button, Input } from "@chakra-ui/react";
+import React, { useState } from "react";
 
 const InputForm = () => {
+  const [myTodo, setMyTodo] = useState("");
   return (
     <>
       <div>InputForm</div>
-      <Input placeholder="Basic usage" />
+      <Box>
+        <Input
+          placeholder="write Todo"
+          onChange={(event) => {
+            setMyTodo(event.target.value);
+          }}
+        />
+        <Button>add</Button>
+      </Box>
     </>
   );
 };
