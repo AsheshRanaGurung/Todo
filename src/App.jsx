@@ -3,6 +3,8 @@ import React from "react";
 import useLocalStorage from "./useLocalStorage";
 import { AnimatePresence, motion } from "framer-motion";
 import "@fontsource/yellowtail";
+import Child from "./components/Child";
+import Header from "./components/Header";
 
 function App() {
   // const [listValue, setListValue] = useLocalStorage("list", []); //Array of todos obj {id:id, text:todo}
@@ -35,6 +37,11 @@ function App() {
   //   return true;
   // };
 
-  return <p>Hello</p>;
+  return (
+    <>
+      <Header />
+      <Child />
+    </>
+  );
 }
 export default App;
