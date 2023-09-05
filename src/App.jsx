@@ -45,6 +45,7 @@ function App() {
         flexDirection: "column",
         width: "400px",
         margin: "auto",
+        boxShadow: " 0px 35px 15px -8px rgba(0,0,0,0.1)",
       }}
     >
       {/* <Box width= "500px" > */}
