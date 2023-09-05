@@ -5,9 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import "@fontsource/yellowtail";
 import Child from "./components/Child";
 import Header from "./components/Header";
+import MyTodos from "./components/MyTodos";
 
 function App() {
-  // const [listValue, setListValue] = useLocalStorage("list", []); //Array of todos obj {id:id, text:todo}
+  const [listValue, setListValue] = useLocalStorage("list", []); //Array of todos obj {id:id, text:todo}
 
   // const toast = useToast();
   // const handleToast = (text, status) =>
@@ -17,12 +18,12 @@ function App() {
   //     isClosable: true,
   //   }); //toast messages
 
-  // const addToList = (item) => {
-  //   setListValue((listValue) =>
-  //     listValue.concat({ text: item, id: String(Date.now()) })
-  //   );
-  //   return true;
-  // };
+  const addToList = (todo) => {
+    setListValue((listValue) =>
+      listValue.concat({ text: todo, id: String(Date.now()) })
+    );
+    return true;
+  };
 
   // const deleteFromList = (index) => {
   //   setListValue((listValue) =>
@@ -48,7 +49,8 @@ function App() {
     >
       {/* <Box width= "500px" > */}
       <Header />
-      <Child />
+      <Child addFunc={addToList} />
+      <MyTodos todos={listValue} />
     </Box>
   );
 }

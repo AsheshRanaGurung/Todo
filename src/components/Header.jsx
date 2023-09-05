@@ -4,7 +4,9 @@ import React from "react";
 const Header = () => {
   return (
     <Flex justifyContent={"center"}>
-      <Heading>To do list</Heading>
+      <Heading size="4xl" fontFamily="title" fontWeight="extrabold">
+        To do list
+      </Heading>
     </Flex>
   );
 };

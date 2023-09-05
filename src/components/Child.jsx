@@ -1,7 +1,7 @@
 import { Box, Button, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-const InputForm = () => {
+const InputForm = ({ addFunc }) => {
   const [myTodo, setMyTodo] = useState("");
   return (
     <>
@@ -13,7 +13,7 @@ const InputForm = () => {
             setMyTodo(event.target.value);
           }}
         />
-        <Button>add</Button>
+        <Button onClick={() => addFunc(myTodo)}>add</Button>
       </Box>
     </>
   );
