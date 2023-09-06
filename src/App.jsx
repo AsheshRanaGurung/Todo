@@ -25,11 +25,9 @@ function App() {
     return true;
   };
 
-  // const deleteFromList = (index) => {
-  //   setListValue((listValue) =>
-  //     listValue.filter((value) => value.text !== index)
-  //   );
-  // };
+  const deleteFromList = (id) => {
+    setListValue((listValue) => listValue.filter((obj) => obj.id !== id));
+  };
   // const handleEdit = (edited) => {
   //   setListValue((listValue) =>
   //     listValue.map((elem) => (elem.id === edited.id ? edited : elem))
@@ -51,7 +49,7 @@ function App() {
       {/* <Box width= "500px" > */}
       <Header />
       <Child addFunc={addToList} />
-      <MyTodos todos={listValue} />
+      <MyTodos todos={listValue} deleteFunc={deleteFromList} />
     </Box>
   );
 }
