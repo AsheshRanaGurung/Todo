@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   Flex,
   Modal,
@@ -34,6 +35,7 @@ const MyTodos = ({ todos, deleteFunc }) => {
             >
               <Text>{obj.text}</Text>
             </Box>
+
             <AiOutlineDelete
               onClick={() => {
                 deleteFunc(obj.id);
