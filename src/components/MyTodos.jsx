@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Flex,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,12 +15,15 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import React from "react";
-import { AiOutlineDelete } from "react-icons/ai";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import React, { useState } from "react";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import useLocalStorage from "../useLocalStorage";
 
 const MyTodos = ({ todos, deleteFunc }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [editInput, setEditinput] = useState();
+  console.log(editInput, "editInput");
+  const [listValue, setListValue] = useLocalStorage("list", []);
   const myArr = todos ?? [];
   return myArr.map((obj) => {
     return (
@@ -35,12 +39,24 @@ const MyTodos = ({ todos, deleteFunc }) => {
             >
               <Text>{obj.text}</Text>
             </Box>
+            <Flex style={{ gap: 8 }}>
+              <AiOutlineEdit
+                onClick={() => {
+                  // setListValue((listValue) => listValue.filter((obj) => obj.id !== id));
 
-            <AiOutlineDelete
-              onClick={() => {
-                deleteFunc(obj.id);
-              }}
-            />
+                  setEditinput(
+                    listValue.find((object) => object.id === obj.id)
+                  );
+                  onOpen();
+                }}
+              />
+              {/* <AiOutlineEdit onClick={onOpen} /> */}
+              <AiOutlineDelete
+                onClick={() => {
+                  deleteFunc(obj.id);
+                }}
+              />
+            </Flex>
           </Flex>
           <Divider />
         </AnimatePresence>
@@ -49,7 +65,14 @@ const MyTodos = ({ todos, deleteFunc }) => {
           <ModalContent>
             <ModalHeader>Modal Title</ModalHeader>
             <ModalCloseButton />
-            <ModalBody>ashesh</ModalBody>
+            <ModalBody>
+              <Input
+                value={editInput?.text}
+                onChange={(e) => {
+                  setEditinput(e.target.value);
+                }}
+              />
+            </ModalBody>
 
             <ModalFooter>
               <Button colorScheme="blue" mr={3} onClick={onClose}>
